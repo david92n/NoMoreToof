@@ -1,6 +1,8 @@
 #include "Entity.h"
 #include "ResourceHandler.h"
 
+#include <cmath>
+
 
 Entity::Entity(const std::string& texturePath)
 {
@@ -15,5 +17,7 @@ Entity::~Entity()
 
 void Entity::Render(sf::RenderTarget& renderTarget)
 {
+	sf::Vector2f pixelPerfectPos(round(m_position.x), round(m_position.y));
+	m_sprite->setPosition(pixelPerfectPos);
 	renderTarget.draw(*m_sprite);
 }

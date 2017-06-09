@@ -15,7 +15,7 @@ public:
 
 private:
 	sf::RenderWindow* m_window;
-	
+	sf::Clock m_clock;
 	Player* m_player;
 };
 

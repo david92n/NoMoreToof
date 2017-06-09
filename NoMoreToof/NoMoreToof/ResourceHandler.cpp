@@ -1,4 +1,5 @@
 #include "ResourceHandler.h"
+#include <iostream>
 
 std::map<std::string, sf::Texture*> ResourceHandler::_textures;
 
@@ -12,6 +13,10 @@ sf::Texture* ResourceHandler::LoadTexture(const std::string& path)
 		if (texture->loadFromFile(path))
 		{
 			_textures[path] = texture;
+		}
+		else
+		{
+			std::cout << "Can't load " << path << "\n";
 		}
 	}
 
