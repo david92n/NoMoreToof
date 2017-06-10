@@ -74,8 +74,6 @@ void Player::Update(float deltaTime)
 	m_isWalking = input.x != 0.0f || input.y != 0.0f;
 
 	m_position += input * 50.0f * deltaTime;
-	m_animIdle.SetPosition(m_position);
-	m_animWalk.SetPosition(m_position);
 
 	HandleWallCollision();
 
@@ -95,6 +93,9 @@ void Player::Update(float deltaTime)
 void Player::Render(sf::RenderTarget& renderTarget)
 {
 	Entity::Render(renderTarget);
+
+	m_animIdle.SetPosition(m_position);
+	m_animWalk.SetPosition(m_position);
 
 	if (m_isWalking)
 	{

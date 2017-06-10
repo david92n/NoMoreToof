@@ -103,6 +103,8 @@ void StateGame::Update(float deltaTime)
 		m_currentRoom->SetPosition(lerp(m_timer, m_currentRoom->GetStartPosition(), m_currentRoom->GetTargetPosition()));
 		m_nextRoom->SetPosition(lerp(m_timer, m_nextRoom->GetStartPosition(), m_nextRoom->GetTargetPosition()));
 
+		m_player->SetPosition(lerp(m_timer, m_player->GetStartPosition(), m_player->GetTargetPosition()));
+
 		if (!m_isChangingRoom)
 		{
 			m_currentRoom = m_nextRoom;
@@ -136,6 +138,7 @@ void StateGame::TryEnterRoom(StateGame::Direction dir)
 
 	sf::Vector2f newRoomPosition;
 	sf::Vector2f oldRoomTarget;
+	sf::Vector2f playerOffset;
 
 	Room* newRoom;
 
@@ -145,21 +148,25 @@ void StateGame::TryEnterRoom(StateGame::Direction dir)
 		newRoom = currentRoom->GetLeftRoom();
 		newRoomPosition.x = -384.0f;
 		oldRoomTarget.x = 384.0f;
+		playerOffset.x = 352.0f;
 		break;
 	case StateGame::Direction::RIGHT:
 		newRoom = currentRoom->GetRightRoom();
 		newRoomPosition.x = 384.0f;
 		oldRoomTarget.x = -384.0f;
+		playerOffset.x = -352.0f;
 		break;
 	case StateGame::Direction::UP:
 		newRoom = currentRoom->GetUpRoom();
 		newRoomPosition.y = -216.0f;
 		oldRoomTarget.y = 216.0f;
+		playerOffset.y = 182;
 		break;
 	case StateGame::Direction::DOWN:
 		newRoom = currentRoom->GetDownRoom();
 		newRoomPosition.y = 216.0f;
 		oldRoomTarget.y = -216.0f;
+		playerOffset.y = -182;
 		break;
 	}
 
@@ -171,6 +178,9 @@ void StateGame::TryEnterRoom(StateGame::Direction dir)
 	
 	currentRoom->SetStartPosition(sf::Vector2f(0.0f, 0.0f));
 	currentRoom->SetTargetPosition(oldRoomTarget);
+
+	m_player->SetStartPosition(m_player->GetPosition());
+	m_player->SetTargetPosition(m_player->GetPosition() + playerOffset);
 
 	m_isChangingRoom = true;
 	m_nextRoom = newRoom;

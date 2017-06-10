@@ -18,3 +18,33 @@ void Entity::Render(sf::RenderTarget& renderTarget)
 	m_sprite->setPosition(pixelPerfectPos);
 	renderTarget.draw(*m_sprite);
 }
+
+sf::Vector2f Entity::GetPosition()
+{
+	return m_position;
+}
+
+void Entity::SetPosition(sf::Vector2f position)
+{
+	m_position = position;
+}
+
+sf::Vector2f Entity::GetStartPosition()
+{
+	return m_startPosition;
+}
+
+void Entity::SetStartPosition(sf::Vector2f position)
+{
+	m_startPosition = position;
+}
+
+sf::Vector2f Entity::GetTargetPosition()
+{
+	return m_targetPosition;
+}
+
+void Entity::SetTargetPosition(sf::Vector2f position)
+{
+	m_targetPosition = position;
+}
