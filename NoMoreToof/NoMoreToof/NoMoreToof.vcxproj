@@ -157,6 +157,10 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ResourceHandler.cpp" />
     <ClCompile Include="SpriteAnimation.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateGame.cpp" />
+    <ClCompile Include="StateHandler.cpp" />
+    <ClCompile Include="StateMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h" />
@@ -165,6 +169,10 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="ResourceHandler.h" />
     <ClInclude Include="SpriteAnimation.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateGame.h" />
+    <ClInclude Include="StateHandler.h" />
+    <ClInclude Include="StateMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Player.h"
-
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
@@ -14,8 +12,12 @@ public:
 	void Run();
 
 private:
+	void CreateWindow(bool fullscreen);
+
+	std::string m_title;
 	sf::RenderWindow* m_window;
 	sf::Clock m_clock;
-	Player* m_player;
+
+	bool m_fullscreen;
 };
 

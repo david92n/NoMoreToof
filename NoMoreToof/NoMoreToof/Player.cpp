@@ -1,9 +1,10 @@
 #include "Player.h"
 
 
-
-Player::Player() : Entity("res/test.png"), m_animIdle("res/toofidle.png", 4, 6, 0.1f), m_animWalk("res/toofwalk.png", 4, 8, 0.06f), m_isWalking(false)
+Player::Player() : Entity("res/shadow.png"), m_animIdle("res/toofidle.png", 4, 6, 0.1f), m_animWalk("res/toofwalk.png", 4, 8, 0.06f), m_isWalking(false)
 {
+	m_spriteOffset.x = 7;
+	m_spriteOffset.y = 29;
 }
 
 
@@ -61,6 +62,8 @@ void Player::Update(float deltaTime)
 
 void Player::Render(sf::RenderTarget& renderTarget)
 {
+	Entity::Render(renderTarget);
+
 	if (m_isWalking)
 	{
 		m_animWalk.Render(renderTarget);
@@ -69,6 +72,4 @@ void Player::Render(sf::RenderTarget& renderTarget)
 	{
 		m_animIdle.Render(renderTarget);
 	}
-	
-	//Entity::Render(renderTarget);
 }

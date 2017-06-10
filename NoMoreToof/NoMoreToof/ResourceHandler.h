@@ -5,9 +5,8 @@ static class ResourceHandler
 {
 public:
 	static sf::Texture* LoadTexture(const std::string& path);
-	//static void UnloadTexture(const std::string& path);
-
-	//static void UnloadAll();
+	static void UnloadTexture(const std::string& path);
+	static void UnloadAllTextures();
 private:
 	static std::map<std::string, sf::Texture*> _textures;
 };
