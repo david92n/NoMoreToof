@@ -27,7 +27,7 @@ void StateGame::PollEvent(sf::Event& e)
 		{
 		case sf::Keyboard::Escape:
 			StateHandler::Pop();
-			break;
+			return;
 		}
 	}
 

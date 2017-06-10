@@ -25,12 +25,14 @@ Player::~Player()
 
 void Player::PollEvent(sf::Event& e)
 {
+	m_dialogue.PollEvent(e);
 	if (e.type == sf::Event::KeyPressed)
 	{
 		switch (e.key.code)
 		{
-		case sf::Keyboard::Z:
-			m_dialogue.SetActive(!m_dialogue.GetActive());
+		case sf::Keyboard::X:
+			//m_dialogue.SetActive(!m_dialogue.GetActive());
+			m_dialogue.SetActive(true);
 			break;
 		}
 	}
@@ -83,11 +85,12 @@ void Player::Update(float deltaTime)
 		m_animIdle.SetAnimation(animIndex);
 		m_animWalk.SetAnimation(animIndex);
 	}
-		
+	
 	m_animIdle.Update(deltaTime);
 	m_animWalk.Update(deltaTime);
 
 	UpdateDialogueBox();
+	m_dialogue.Update(deltaTime);
 }
 
 void Player::Render(sf::RenderTarget& renderTarget)
