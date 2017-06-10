@@ -44,3 +44,8 @@ void SpriteAnimation::Render(sf::RenderTarget& renderTarget)
 	m_sprite->setTextureRect(sf::IntRect(m_currentCol * m_frameWidth, m_currentRow * m_frameHeight, m_frameWidth, m_frameHeight));
 	renderTarget.draw(*m_sprite);
 }
+
+sf::Vector2u SpriteAnimation::GetSpriteSize()
+{
+	return sf::Vector2u(m_frameWidth, m_frameHeight);
+}

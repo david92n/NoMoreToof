@@ -1,19 +1,17 @@
 #include "StateMenu.h"
 #include "StateHandler.h"
 #include "StateGame.h"
+#include "ResourceHandler.h"
 
 StateMenu::StateMenu() : State(), m_currentButtonIndex(0)
 {
-	m_font.loadFromFile("res/manaspc.ttf");
-
-	sf::Texture& texture = const_cast<sf::Texture&>(m_font.getTexture(12u));
-	texture.setSmooth(false);
+	sf::Font& font = *ResourceHandler::LoadFont("res/manaspc.ttf");
 
 	m_buttons.resize(2);
 	size_t size = m_buttons.size();
 	for (size_t i = 0; i < size; ++i)
 	{
-		m_buttons[i].setFont(m_font);
+		m_buttons[i].setFont(font);
 		m_buttons[i].setCharacterSize(12u);
 	}
 

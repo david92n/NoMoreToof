@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DialogueBox.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityStatic.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="StateMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DialogueBox.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityStatic.h" />
     <ClInclude Include="Game.h" />

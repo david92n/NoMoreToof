@@ -15,8 +15,6 @@ public:
 private:
 	std::vector<sf::Text> m_buttons;
 
-	sf::Font m_font;
-
 	int m_currentButtonIndex;
 };
 

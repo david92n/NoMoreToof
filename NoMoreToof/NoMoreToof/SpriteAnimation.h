@@ -14,10 +14,12 @@ public:
 	void Update(float deltaTime);
 	void Render(sf::RenderTarget& renderTarget);
 
+	sf::Vector2u GetSpriteSize();
+
 private:
 	sf::Sprite* m_sprite;
 	
-	int m_frameWidth, m_frameHeight;
+	unsigned int m_frameWidth, m_frameHeight;
 	int m_numRows, m_numCols;
 	float m_frameTime;
 

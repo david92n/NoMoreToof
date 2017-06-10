@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "StateMenu.h"
+#include "StateGame.h"
 #include "StateHandler.h"
 
 Game::Game(const std::string& title) : m_title(title), m_fullscreen(false)
@@ -15,9 +16,9 @@ Game::~Game()
 
 void Game::Run()
 {
-	
-	State* menu = new StateMenu();
-	StateHandler::Push(menu);
+	StateHandler::Push(new StateMenu());
+	// DEBUG
+	StateHandler::Push(new StateGame());
 
 	while (m_window->isOpen() && StateHandler::Size() > 0)
 	{
