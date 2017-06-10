@@ -7,7 +7,7 @@ Player::Player(StateGame* game) : Entity("shadow"), m_game(game), m_animIdle("to
 	m_spriteOffset.x = 7;
 	m_spriteOffset.y = 29;
 
-	m_position.x = 50;
+	m_position.x = 300;
 	m_position.y = 100;
 
 	sf::Vector2f offsets[4];

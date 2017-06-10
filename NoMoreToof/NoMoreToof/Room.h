@@ -1,6 +1,10 @@
 #pragma once
 #include <SFML/Graphics/Sprite.hpp>
 #include <string>
+#include <vector>
+
+class EntityNPC;
+
 class Room
 {
 public:
@@ -26,6 +30,8 @@ public:
 	Room* GetUpRoom();
 	Room* GetDownRoom();
 private:
+	std::vector<EntityNPC*> m_npcs;
+
 	sf::Vector2f m_startPosition;
 	sf::Vector2f m_targetPosition;
 

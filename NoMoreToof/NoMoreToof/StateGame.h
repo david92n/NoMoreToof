@@ -2,6 +2,7 @@
 #include "State.h"
 #include "Room.h"
 #include <map>
+#include <vector>
 
 class Player;
 

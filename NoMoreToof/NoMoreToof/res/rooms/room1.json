@@ -1,3 +1,25 @@
 {
-"background":"background"
+"background":"background",
+"npcs": [
+    {
+      "texture": "egg_idle",
+      "x": 10,
+	  "y": 50,
+	  "shadowX": 7,
+	  "shadowY": 31,
+	  "numRows": 4,
+	  "numCols": 4,
+	  "numFrames": 15
+    },
+	{
+      "texture": "toast_idle",
+      "x": 100,
+	  "y": 50,
+	  "shadowX": 8,
+	  "shadowY": 42,
+	  "numRows": 4,
+	  "numCols": 4,
+	  "numFrames": 15
+    }
+  ]
 }

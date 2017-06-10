@@ -14,7 +14,7 @@ Entity::~Entity()
 
 void Entity::Render(sf::RenderTarget& renderTarget)
 {
-	sf::Vector2f pixelPerfectPos(round(m_position.x + m_spriteOffset.x), round(m_position.y + m_spriteOffset.y));
+	sf::Vector2f pixelPerfectPos(round(m_rootPosition.x + m_position.x + m_spriteOffset.x), round(m_rootPosition.y + m_position.y + m_spriteOffset.y));
 	m_sprite->setPosition(pixelPerfectPos);
 	renderTarget.draw(*m_sprite);
 }
@@ -27,6 +27,16 @@ sf::Vector2f Entity::GetPosition()
 void Entity::SetPosition(sf::Vector2f position)
 {
 	m_position = position;
+}
+
+sf::Vector2f Entity::GetRootPosition()
+{
+	return m_rootPosition;
+}
+
+void Entity::SetRootPosition(sf::Vector2f position)
+{
+	m_rootPosition = position;
 }
 
 sf::Vector2f Entity::GetStartPosition()

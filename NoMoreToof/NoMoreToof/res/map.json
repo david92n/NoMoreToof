@@ -2,7 +2,7 @@
 "rooms": [
     {
       "id": "room0",
-      "left": "room1",
+      "left": null,
 	  "right": "room1",
 	  "up": null,
 	  "down": null

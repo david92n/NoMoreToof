@@ -13,6 +13,9 @@ public:
 	sf::Vector2f GetPosition();
 	void SetPosition(sf::Vector2f position);
 
+	sf::Vector2f GetRootPosition();
+	void SetRootPosition(sf::Vector2f position);
+
 	sf::Vector2f GetStartPosition();
 	void SetStartPosition(sf::Vector2f position);
 
@@ -21,6 +24,7 @@ public:
 protected:
 	sf::Vector2f m_spriteOffset;
 	sf::Vector2f m_position;
+	sf::Vector2f m_rootPosition;
 private:
 	sf::Vector2f m_startPosition;
 	sf::Vector2f m_targetPosition;

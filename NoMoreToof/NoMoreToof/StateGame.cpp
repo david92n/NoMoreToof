@@ -24,7 +24,8 @@ StateGame::StateGame() : m_isChangingRoom(false), m_timer(0.0f)
 			if (room.find("id") != room.end())
 			{
 				std::string roomid = room["id"];
-				m_rooms[roomid] = new Room(roomid);
+				Room* newRoom = new Room(roomid);
+				m_rooms[roomid] = newRoom;
 			}
 		}
 		
