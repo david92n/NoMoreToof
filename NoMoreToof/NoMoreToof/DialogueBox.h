@@ -30,6 +30,8 @@ public:
 	void SetOffsetLocation(Placement placementOffset);
 
 private:
+	void SetNextArrow(bool next);
+
 	sf::Sprite m_box;
 	sf::Sprite m_arrow;
 	sf::Sprite m_next;

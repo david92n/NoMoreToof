@@ -3,15 +3,9 @@
 
 #include "ResourceHandler.h"
 
-StateGame::StateGame()
+StateGame::StateGame() : m_room("room0")
 {
 	m_player = new Player();
-	m_background.setTexture(*ResourceHandler::LoadTexture("res/background.png"));
-
-	m_text.setFont(*ResourceHandler::LoadFont("res/manaspc.ttf"));
-	m_text.setCharacterSize(12u);
-	m_text.setString("Yo this is a sample text, what do you think?\nnew line?");
-	m_text.setPosition(10, 50);
 }
 
 StateGame::~StateGame()
@@ -36,14 +30,12 @@ void StateGame::PollEvent(sf::Event& e)
 
 void StateGame::Update(float deltaTime)
 {
+	m_room.Update(deltaTime);
 	m_player->Update(deltaTime);
 }
 
 void StateGame::Render(sf::RenderTarget& renderTarget)
 {
-	renderTarget.draw(m_background);
-
+	m_room.Render(renderTarget);
 	m_player->Render(renderTarget);
-
-	//renderTarget.draw(m_text);
 }

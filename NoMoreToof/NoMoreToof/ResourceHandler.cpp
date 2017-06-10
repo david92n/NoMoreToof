@@ -6,18 +6,20 @@ std::map<std::string, sf::Font*> ResourceHandler::_fonts;
 
 sf::Texture* ResourceHandler::LoadTexture(const std::string& path)
 {
-	sf::Texture* texture = _textures[path];
+	std::string texturePath = "res/textures/" + path + ".png";
+
+	sf::Texture* texture = _textures[texturePath];
 	
 	if (texture == nullptr)
 	{
 		texture = new sf::Texture();
-		if (texture->loadFromFile(path))
+		if (texture->loadFromFile(texturePath))
 		{
-			_textures[path] = texture;
+			_textures[texturePath] = texture;
 		}
 		else
 		{
-			std::cout << "Can't load " << path << "\n";
+			std::cout << "Can't load " << texturePath << "\n";
 		}
 	}
 
@@ -27,12 +29,14 @@ sf::Texture* ResourceHandler::LoadTexture(const std::string& path)
 
 void ResourceHandler::UnloadTexture(const std::string& path)
 {
-	sf::Texture* texture = _textures[path];
+	std::string texturePath = "res/textures/" + path + ".png";
+
+	sf::Texture* texture = _textures[texturePath];
 
 	if (texture != nullptr)
 	{
 		delete texture;
-		_textures.erase(path);
+		_textures.erase(texturePath);
 	}
 }
 

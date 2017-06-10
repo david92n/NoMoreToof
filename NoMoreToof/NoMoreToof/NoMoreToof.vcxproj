@@ -157,6 +157,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ResourceHandler.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="SpriteAnimation.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateGame.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ResourceHandler.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="SpriteAnimation.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateGame.h" />

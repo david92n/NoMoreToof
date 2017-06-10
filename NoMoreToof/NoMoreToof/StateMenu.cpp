@@ -5,7 +5,7 @@
 
 StateMenu::StateMenu() : State(), m_currentButtonIndex(0)
 {
-	sf::Font& font = *ResourceHandler::LoadFont("res/manaspc.ttf");
+	sf::Font& font = *ResourceHandler::LoadFont("res/fonts/manaspc.ttf");
 
 	m_buttons.resize(2);
 	size_t size = m_buttons.size();

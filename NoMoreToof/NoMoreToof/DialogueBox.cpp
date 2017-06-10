@@ -4,13 +4,11 @@
 DialogueBox::DialogueBox() : m_active(false), m_currentPlacementOffset(DialogueBox::UPPERLEFT),
 	m_currentStringIndex(0), m_currentSubstrLen(1), m_isSpeed(false), m_isDone(false), m_timer(0.0f)
 {
-	m_box.setTexture(*ResourceHandler::LoadTexture("res/dialoguebox.png"));
-	m_arrow.setTexture(*ResourceHandler::LoadTexture("res/dialoguetails.png"));
-	m_next.setTexture(*ResourceHandler::LoadTexture("res/arrow_exit.png"));
+	m_box.setTexture(*ResourceHandler::LoadTexture("dialoguebox"));
+	m_arrow.setTexture(*ResourceHandler::LoadTexture("dialoguetails"));
+	m_next.setTexture(*ResourceHandler::LoadTexture("arrow_exit"));
 
-	m_next.setTextureRect(sf::IntRect(0, 0, 9, 11));
-
-	m_text.setFont(*ResourceHandler::LoadFont("res/manaspc.ttf"));
+	m_text.setFont(*ResourceHandler::LoadFont("res/fonts/manaspc.ttf"));
 	m_text.setCharacterSize(12u);
 
 	m_dialogueStrings.push_back("Hello, I am\nToof, please\nhelp me find\nthe king!");
@@ -37,6 +35,8 @@ void DialogueBox::SetActive(bool active)
 	m_currentStringIndex = 0;
 	m_currentSubstrLen = 1;
 	m_text.setString("");
+
+	SetNextArrow(true);
 }
 
 void DialogueBox::SetLines()
@@ -96,6 +96,10 @@ void DialogueBox::Update(float deltaTime)
 	if (m_currentSubstrLen == m_dialogueStrings[m_currentStringIndex].size() + 1)
 	{
 		m_isDone = true;
+		if (m_currentStringIndex + 1 >= m_dialogueStrings.size())
+		{
+			SetNextArrow(false);
+		}
 		return;
 	}
 
@@ -181,4 +185,16 @@ void DialogueBox::SetOffsetLocation(DialogueBox::Placement placementOffset)
 	}
 
 	m_arrow.setTextureRect(arrowRect);
+}
+
+void DialogueBox::SetNextArrow(bool next)
+{
+	if (next)
+	{
+		m_next.setTextureRect(sf::IntRect(9, 0, 9, 11));
+	}
+	else
+	{
+		m_next.setTextureRect(sf::IntRect(0, 0, 9, 11));
+	}
 }

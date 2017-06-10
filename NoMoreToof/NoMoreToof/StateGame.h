@@ -1,6 +1,6 @@
 #pragma once
 #include "State.h"
-
+#include "Room.h"
 #include "Player.h"
 
 class StateGame :
@@ -16,8 +16,6 @@ public:
 
 private:
 	Player* m_player;
-
-	sf::Sprite m_background;
-	sf::Text m_text;
+	Room m_room;
 };
 

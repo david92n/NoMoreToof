@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <iostream>
 
-Player::Player() : Entity("res/shadow.png"), m_animIdle("res/toofidle.png", 4, 6, 0.1f), m_animWalk("res/toofwalk.png", 4, 8, 0.06f), m_isWalking(false)
+Player::Player() : Entity("shadow"), m_animIdle("toofidle", 4, 6, 0.1f), m_animWalk("toofwalk", 4, 8, 0.06f), m_isWalking(false)
 {
 	m_spriteOffset.x = 7;
 	m_spriteOffset.y = 29;
