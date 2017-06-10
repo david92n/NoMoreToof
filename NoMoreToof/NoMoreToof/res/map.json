@@ -2,14 +2,14 @@
 "rooms": [
     {
       "id": "room0",
-      "left": null,
+      "left": "room1",
 	  "right": "room1",
 	  "up": null,
 	  "down": null
     },
     {
       "id": "room1",
-      "left": null,
+      "left": "room0",
 	  "right": null,
 	  "up": "room2",
 	  "down": null
@@ -19,7 +19,7 @@
       "left": null,
 	  "right": null,
 	  "up": null,
-	  "down": null
+	  "down": "room1"
     }
   ]
 }

@@ -23,8 +23,10 @@ public:
 private:
 	Player* m_player;
 
-	std::string m_currentRoom;
+	Room* m_currentRoom;
+	Room* m_nextRoom;
 	std::map<std::string, Room*> m_rooms;
 
+	float m_timer;
 	bool m_isChangingRoom;
 };
