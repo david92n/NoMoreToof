@@ -1,7 +1,7 @@
 #pragma once
 #include <stack>
 #include "State.h"
-static class StateHandler
+class StateHandler
 {
 public:
 	static void Push(State* state);

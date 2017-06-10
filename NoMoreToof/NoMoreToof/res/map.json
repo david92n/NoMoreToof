@@ -1,0 +1,25 @@
+{
+"rooms": [
+    {
+      "id": "room0",
+      "left": null,
+	  "right": "room1",
+	  "up": null,
+	  "down": null
+    },
+    {
+      "id": "room1",
+      "left": null,
+	  "right": null,
+	  "up": "room2",
+	  "down": null
+    },
+	{
+      "id": "room2",
+      "left": null,
+	  "right": null,
+	  "up": null,
+	  "down": null
+    }
+  ]
+}

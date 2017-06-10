@@ -3,18 +3,23 @@
 #include "SpriteAnimation.h"
 #include "DialogueBox.h"
 
+class StateGame;
+
 class Player :
 	public Entity
 {
 public:
-	Player();
+	Player(StateGame* game);
 	~Player();
 
 	void PollEvent(sf::Event& e);
 	virtual void Update(float deltaTime);
 	virtual void Render(sf::RenderTarget& renderTarget);
 private:
+	void HandleWallCollision();
 	void UpdateDialogueBox();
+
+	StateGame* m_game;
 
 	SpriteAnimation m_animIdle;
 	SpriteAnimation m_animWalk;
@@ -23,4 +28,3 @@ private:
 
 	bool m_isWalking;
 };
-

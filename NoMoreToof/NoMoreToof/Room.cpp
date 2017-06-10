@@ -30,3 +30,11 @@ void Room::Render(sf::RenderTarget& renderTarget)
 {
 	renderTarget.draw(m_background);
 }
+
+void Room::SetRooms(Room* left, Room* right, Room* up, Room* down)
+{
+	m_left = left;
+	m_right = right;
+	m_up = up;
+	m_down = down;
+}

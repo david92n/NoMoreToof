@@ -1,7 +1,8 @@
 #include "Player.h"
+#include "StateGame.h"
 #include <iostream>
 
-Player::Player() : Entity("shadow"), m_animIdle("toofidle", 4, 6, 0.1f), m_animWalk("toofwalk", 4, 8, 0.06f), m_isWalking(false)
+Player::Player(StateGame* game) : Entity("shadow"), m_game(game), m_animIdle("toofidle", 4, 6, 0.1f), m_animWalk("toofwalk", 4, 8, 0.06f), m_isWalking(false)
 {
 	m_spriteOffset.x = 7;
 	m_spriteOffset.y = 29;
@@ -47,25 +48,21 @@ void Player::Update(float deltaTime)
 	{
 		animIndex = 2;
 		input.x += 1.0f;
-		//m_dialogue.SetOffsetLocation(DialogueBox::UPPERLEFT);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		animIndex = 3;
 		input.x -= 1.0f;
-		//m_dialogue.SetOffsetLocation(DialogueBox::UPPERRIGHT);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
 		animIndex = 0;
 		input.y += 1.0f;
-		//m_dialogue.SetOffsetLocation(DialogueBox::LOWERLEFT);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		animIndex = 1;
 		input.y -= 1.0f;
-		//m_dialogue.SetOffsetLocation(DialogueBox::LOWERRIGHT);
 	}
 
 	if (input.x != 0.0f && input.y != 0.0f)
@@ -79,6 +76,8 @@ void Player::Update(float deltaTime)
 	m_position += input * 50.0f * deltaTime;
 	m_animIdle.SetPosition(m_position);
 	m_animWalk.SetPosition(m_position);
+
+	HandleWallCollision();
 
 	if (animIndex != -1)
 	{
@@ -107,6 +106,31 @@ void Player::Render(sf::RenderTarget& renderTarget)
 	}
 
 	m_dialogue.Render(renderTarget);
+}
+
+void Player::HandleWallCollision()
+{
+	if (m_position.x < 0.0f)
+	{
+		m_position.x = 0.0f;
+		m_game->TryEnterRoom(StateGame::LEFT);
+	}
+	else if (m_position.x > 384 - m_animIdle.GetSpriteSize().x)
+	{
+		m_position.x = 384 - m_animIdle.GetSpriteSize().x;
+		m_game->TryEnterRoom(StateGame::RIGHT);
+	}
+
+	if (m_position.y < 0.0f)
+	{
+		m_position.y = 0.0f;
+		m_game->TryEnterRoom(StateGame::UP);
+	}
+	else if (m_position.y > 216 - m_animIdle.GetSpriteSize().y)
+	{
+		m_position.y = 216 - m_animIdle.GetSpriteSize().y;
+		m_game->TryEnterRoom(StateGame::DOWN);
+	}
 }
 
 void Player::UpdateDialogueBox()
