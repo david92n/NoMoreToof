@@ -5,7 +5,7 @@
 class OneAnimation
 {
 public:
-	OneAnimation(const std::string& texturePath, int numRows, int numCols, int numFrames, float frameTime);
+	OneAnimation(const std::string& texturePath, int numRows, int numCols, int numFrames, float frameTime, bool playOnce = false);
 	~OneAnimation();
 
 	void SetPosition(sf::Vector2f position);
@@ -14,6 +14,8 @@ public:
 	void Render(sf::RenderTarget& renderTarget);
 
 	sf::Vector2u GetSpriteSize();
+
+	bool IsDone() { return m_isDone; }
 
 private:
 	sf::Sprite* m_sprite;
@@ -24,5 +26,7 @@ private:
 
 	float m_currentTimer;
 	int m_currentRow, m_currentCol, m_currentFrame;
+	
+	bool m_playOnce, m_isDone;
 };
 
