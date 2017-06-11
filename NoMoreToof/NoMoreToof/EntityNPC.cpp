@@ -31,10 +31,12 @@ void EntityNPC::Update(float deltaTime)
 {
 	m_animIdle.Update(deltaTime);
 
+	/*
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))
 	{
 		m_dialogue.SetActive(true);
 	}
+	*/
 
 	UpdateDialogueBox();
 	m_dialogue.Update(deltaTime);

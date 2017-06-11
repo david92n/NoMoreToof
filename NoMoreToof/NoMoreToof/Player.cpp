@@ -8,7 +8,7 @@ Player::Player(StateGame* game)
 	m_spriteOffset.x = 7;
 	m_spriteOffset.y = 29;
 
-	m_position.x = 300;
+	m_position.x = 150;
 	m_position.y = 100;
 
 	sf::Vector2f offsets[4];

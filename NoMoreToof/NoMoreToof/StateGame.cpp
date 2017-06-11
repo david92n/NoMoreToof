@@ -122,7 +122,7 @@ void StateGame::Update(float deltaTime)
 		m_currentRoom->Update(deltaTime);
 		m_player->Update(deltaTime);
 
-		CheckForDialogue();
+		//CheckForDialogue();
 	}
 }
 
