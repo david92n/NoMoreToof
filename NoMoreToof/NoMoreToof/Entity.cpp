@@ -58,3 +58,8 @@ void Entity::SetTargetPosition(sf::Vector2f position)
 {
 	m_targetPosition = position;
 }
+
+sf::Vector2f Entity::GetSpritePosition()
+{
+	return m_sprite->getPosition();
+}

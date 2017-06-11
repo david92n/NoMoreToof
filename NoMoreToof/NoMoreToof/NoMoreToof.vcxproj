@@ -181,6 +181,7 @@
     <ClInclude Include="StateGame.h" />
     <ClInclude Include="StateHandler.h" />
     <ClInclude Include="StateMenu.h" />
+    <ClInclude Include="TalkInfo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

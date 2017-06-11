@@ -1,3 +1,15 @@
 {
-"background":"background"
+"background":"panel03",
+"npcs": [
+    {
+      "texture": "dyingtoof_idle01",
+      "x": 40,
+	  "y": 50,
+	  "shadowX": 7,
+	  "shadowY": 31,
+	  "numRows": 2,
+	  "numCols": 5,
+	  "numFrames": 9
+    }
+  ]
 }

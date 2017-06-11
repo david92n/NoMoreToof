@@ -1,13 +1,15 @@
 #include "StateGame.h"
 #include "Player.h"
+#include "EntityNPC.h"
 #include "StateHandler.h"
 #include "ResourceHandler.h"
 #include "json.hpp"
 #include <fstream>
 using json = nlohmann::json;
 
+#include <iostream>
 
-StateGame::StateGame() : m_isChangingRoom(false), m_timer(0.0f)
+StateGame::StateGame() : m_isChangingRoom(false), m_timer(0.0f), m_currentTalkingNPC(nullptr)
 {
 	m_player = new Player(this);
 
@@ -83,6 +85,9 @@ void StateGame::PollEvent(sf::Event& e)
 	if (!m_isChangingRoom)
 	{
 		m_player->PollEvent(e);
+
+		if (m_currentTalkingNPC != nullptr)
+			m_currentTalkingNPC->PollEvent(e);
 	}	
 }
 
@@ -116,6 +121,8 @@ void StateGame::Update(float deltaTime)
 	{
 		m_currentRoom->Update(deltaTime);
 		m_player->Update(deltaTime);
+
+		CheckForDialogue();
 	}
 }
 
@@ -186,4 +193,27 @@ void StateGame::TryEnterRoom(StateGame::Direction dir)
 	m_isChangingRoom = true;
 	m_nextRoom = newRoom;
 	m_timer = 0.0f;
+}
+
+void StateGame::CheckForDialogue()
+{
+	std::vector<EntityNPC*>& npcList = m_currentRoom->GetNPCList();
+
+	sf::Vector2f playerPos = m_player->GetSpritePosition();
+
+	size_t size = npcList.size();
+	for (size_t i = 0; i < size; ++i)
+	{
+		sf::Vector2f npcPos = npcList[i]->GetSpritePosition();
+		
+		sf::Vector2f delta = npcPos - playerPos;
+
+		float sqrLength = delta.x * delta.x + delta.y * delta.y;
+
+		if (sqrLength < 2500)
+		{
+			//std::cout << "close to npc: " << i << "\n";
+			m_currentTalkingNPC = npcList[i];
+		}
+	}
 }

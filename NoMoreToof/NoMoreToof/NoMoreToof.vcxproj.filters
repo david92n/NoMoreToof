@@ -104,5 +104,8 @@
     <ClInclude Include="OneAnimation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TalkInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

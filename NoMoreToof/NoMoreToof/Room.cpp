@@ -32,6 +32,7 @@ Room::Room(const std::string& roomName)
 				int numCols = 1;
 				int numFrames = 1;
 				float frameTime = 0.1f;
+				std::string dialogueId;
 
 				if (npc.find("x") != npc.end())
 					position.x = npc["x"];
@@ -49,12 +50,18 @@ Room::Room(const std::string& roomName)
 					numFrames = npc["numFrames"];
 				if (npc.find("frameTime") != npc.end())
 					frameTime = npc["frameTime"];
+				if (npc.find("dialogue") != npc.end())
+					dialogueId = npc["dialogue"].get<std::string>();
+
+				std::vector<TalkInfo> talkInfoList = ResourceHandler::GetDialogue(dialogueId);
 
 				EntityNPC* newNPC = new EntityNPC(texture, position, shadowOffset, numRows, numCols, numFrames, frameTime);
+
+				newNPC->SetTalkInfo(talkInfoList);
+
 				m_npcs.push_back(newNPC);
 			}
 		}
-
 	}
 }
 
@@ -124,6 +131,11 @@ void Room::SetRooms(Room* left, Room* right, Room* up, Room* down)
 	m_right = right;
 	m_up = up;
 	m_down = down;
+}
+
+std::vector<EntityNPC*>& Room::GetNPCList()
+{
+	return m_npcs;
 }
 
 Room* Room::GetLeftRoom()

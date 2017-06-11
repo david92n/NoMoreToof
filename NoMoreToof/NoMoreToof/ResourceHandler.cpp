@@ -1,8 +1,13 @@
 #include "ResourceHandler.h"
 #include <iostream>
+#include <fstream>
+#include "json.hpp"
+using json = nlohmann::json;
 
 std::map<std::string, sf::Texture*> ResourceHandler::_textures;
 std::map<std::string, sf::Font*> ResourceHandler::_fonts;
+
+std::map<std::string, std::vector<TalkInfo>> ResourceHandler::_dialogues;
 
 sf::Texture* ResourceHandler::LoadTexture(const std::string& path)
 {
@@ -93,4 +98,58 @@ void ResourceHandler::UnloadAllFonts()
 		delete it->second;
 	}
 	_fonts.clear();
+}
+
+void ResourceHandler::LoadDialogue()
+{
+	std::ifstream i("res/dialogue.json");
+	json j;
+	i >> j;
+
+	if (j.find("dialogues") != j.end())
+	{
+		json dialogueList = j["dialogues"];
+
+		for (auto& dialogue : dialogueList)
+		{
+			if (dialogue.find("id") != dialogue.end())
+			{
+				std::string id = dialogue["id"];
+
+				std::vector<TalkInfo> talkInfoList;
+
+				if (dialogue.find("lines") != dialogue.end())
+				{
+					json lines = dialogue["lines"];
+					for (auto& line : lines)
+					{
+						TalkInfo talk;
+
+						if (line.find("talk") != line.end())
+						{
+							talk.m_talk = line["talk"].get<std::string>();
+
+							if (line.find("lines") != line.end())
+							{
+								json actualLines = line["lines"];
+								for (auto& actualLine : actualLines)
+								{
+									talk.m_lines.push_back(actualLine);
+								}
+							}
+						}
+
+						talkInfoList.push_back(talk);
+					}
+				}
+
+				_dialogues[id] = talkInfoList;
+			}
+		}
+	}
+}
+
+std::vector<TalkInfo> ResourceHandler::GetDialogue(std::string talkId)
+{
+	return _dialogues[talkId];
 }

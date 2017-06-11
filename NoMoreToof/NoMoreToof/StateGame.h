@@ -20,9 +20,11 @@ public:
 	void Render(sf::RenderTarget& renderTarget);
 
 	void TryEnterRoom(Direction dir);
+	void CheckForDialogue();
 
 private:
 	Player* m_player;
+	EntityNPC* m_currentTalkingNPC;
 
 	Room* m_currentRoom;
 	Room* m_nextRoom;

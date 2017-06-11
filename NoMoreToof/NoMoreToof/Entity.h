@@ -21,6 +21,8 @@ public:
 
 	sf::Vector2f GetTargetPosition();
 	void SetTargetPosition(sf::Vector2f position);
+
+	sf::Vector2f GetSpritePosition();
 protected:
 	sf::Vector2f m_spriteOffset;
 	sf::Vector2f m_position;

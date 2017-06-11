@@ -13,6 +13,7 @@ public:
 	virtual void Render(sf::RenderTarget& renderTarget);
 
 private:
+	sf::Sprite m_background;
 	std::vector<sf::Text> m_buttons;
 
 	int m_currentButtonIndex;

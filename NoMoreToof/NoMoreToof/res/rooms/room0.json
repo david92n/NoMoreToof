@@ -1,3 +1,16 @@
 {
-"background":"background"
+"background":"panel01",
+"npcs": [
+    {
+      "texture": "egg_idle",
+      "x": 40,
+	  "y": 50,
+	  "shadowX": 7,
+	  "shadowY": 31,
+	  "numRows": 4,
+	  "numCols": 4,
+	  "numFrames": 15,
+	  "dialogue": "egg"
+    }
+  ]
 }

@@ -5,6 +5,8 @@
 
 StateMenu::StateMenu() : State(), m_currentButtonIndex(0)
 {
+	m_background.setTexture(*ResourceHandler::LoadTexture("intro"));
+
 	sf::Font& font = *ResourceHandler::LoadFont("res/fonts/manaspc.ttf");
 
 	m_buttons.resize(2);
@@ -16,10 +18,10 @@ StateMenu::StateMenu() : State(), m_currentButtonIndex(0)
 	}
 
 	m_buttons[0].setString("Play!");
-	m_buttons[0].setPosition(10, 20);
+	m_buttons[0].setPosition(12, 140);
 
 	m_buttons[1].setString("Exit!");
-	m_buttons[1].setPosition(10, 40);
+	m_buttons[1].setPosition(12, 160);
 }
 
 StateMenu::~StateMenu()
@@ -66,16 +68,18 @@ void StateMenu::Update(float deltaTime)
 
 void StateMenu::Render(sf::RenderTarget& renderTarget)
 {
+	renderTarget.draw(m_background);
+
 	size_t size = m_buttons.size();
 	for (size_t i = 0; i < size; ++i)
 	{
 		if (m_currentButtonIndex == i)
 		{
-			m_buttons[i].setColor(sf::Color::Yellow);
+			m_buttons[i].setColor(sf::Color::Red);
 		}
 		else
 		{
-			m_buttons[i].setColor(sf::Color::White);
+			m_buttons[i].setColor(sf::Color::Black);
 		}
 		renderTarget.draw(m_buttons[i]);
 	}

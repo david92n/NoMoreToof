@@ -25,6 +25,8 @@ public:
 
 	void SetRooms(Room* left, Room* right, Room* up, Room* down);
 
+	std::vector<EntityNPC*>& GetNPCList();
+
 	Room* GetLeftRoom();
 	Room* GetRightRoom();
 	Room* GetUpRoom();

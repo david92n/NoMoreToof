@@ -39,8 +39,9 @@ void DialogueBox::SetActive(bool active)
 	SetNextArrow(true);
 }
 
-void DialogueBox::SetLines()
+void DialogueBox::SetLines(std::vector<std::string> lines)
 {
+	m_dialogueStrings = lines;
 }
 
 sf::Vector2f DialogueBox::GetPosition()

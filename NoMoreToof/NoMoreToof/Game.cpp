@@ -2,11 +2,14 @@
 #include "StateMenu.h"
 #include "StateGame.h"
 #include "StateHandler.h"
+#include "ResourceHandler.h"
 
 Game::Game(const std::string& title) : m_title(title), m_fullscreen(false)
 {
 	m_window = new sf::RenderWindow();
 	CreateWindow(m_fullscreen);
+
+	ResourceHandler::LoadDialogue();
 }
 
 Game::~Game()
@@ -18,7 +21,7 @@ void Game::Run()
 {
 	StateHandler::Push(new StateMenu());
 	// DEBUG
-	StateHandler::Push(new StateGame());
+	//StateHandler::Push(new StateGame());
 
 	while (m_window->isOpen() && StateHandler::Size() > 0)
 	{

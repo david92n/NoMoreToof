@@ -14,7 +14,7 @@ public:
 
 	bool GetActive();
 	void SetActive(bool active);
-	void SetLines();
+	void SetLines(std::vector<std::string> lines);
 
 	sf::Vector2f GetPosition();
 	void SetPosition(sf::Vector2f position);
